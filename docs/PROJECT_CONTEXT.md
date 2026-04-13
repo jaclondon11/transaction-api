@@ -32,36 +32,6 @@ Layers:
 
 ---
 
-## ⚠️ Current Problem (Dependency Injection confusion)
-
-We want to properly implement Dependency Injection using FastAPI `Depends`:
-
-Goals:
-
-* Avoid instantiating dependencies inside services
-* Decouple layers
-* Improve testability
-* Allow easy replacement of repository (e.g., DB later)
-
----
-
-## 🔧 Target Design (Dependency Injection)
-
-We want:
-
-* `TransactionService` should receive `repository` via constructor
-* API layer should inject dependencies using `Depends`
-* No direct instantiation inside routes or services
-
-Example goal:
-
-```python
-def get_transaction_service(repo: Repository = Depends(get_repository)):
-    return TransactionService(repo)
-```
-
----
-
 ## 🚀 Next Tasks
 
 ### 1. Fix Dependency Injection
